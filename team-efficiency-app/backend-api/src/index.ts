@@ -8,7 +8,7 @@ import dotenv from 'dotenv';
 import approvalRoutes from './routes/approvalRoutes';
 import metricsRoutes from './routes/metricsRoutes';
 import webhookRoutes from './routes/webhookRoutes';
-import { initializeSocket } from './services/socketService';
+import { SocketService } from './services/socketService';
 
 dotenv.config();
 
