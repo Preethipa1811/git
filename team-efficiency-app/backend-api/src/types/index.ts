@@ -10,6 +10,8 @@ export interface PullRequest {
   deletions: number;
   labels: string[];
   priority: 'low' | 'medium' | 'high' | 'critical';
+  githubPrId?: number;
+  githubRepo?: string;
   createdAt: Date;
   updatedAt: Date;
 }
