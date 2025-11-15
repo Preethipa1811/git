@@ -19,6 +19,7 @@ export interface GitHubWebhookPayload {
     };
     head: {
       ref: string;
+      sha: string;
     };
     changed_files?: number;
     additions?: number;
