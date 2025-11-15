@@ -286,7 +286,7 @@ export class ApprovalService {
     return approvals;
   }
 
-  private async getApproval(approvalId: string): Promise<Approval | null> {
+  async getApproval(approvalId: string): Promise<Approval | null> {
     const { rows } = await this.db.query(
       `SELECT a.*, pr.*
        FROM approvals a
