@@ -329,7 +329,8 @@ export class ApprovalService {
     };
 
     if (row.assigned_reviewer_id) {
-      approval.assignedReviewer = await this.getTeamMember(row.assigned_reviewer_id);
+      const teamMember = await this.getTeamMember(row.assigned_reviewer_id);
+      approval.assignedReviewer = teamMember || undefined;
     }
 
     return approval;
