@@ -45,16 +45,17 @@ export class ApprovalService {
     let reviewer: TeamMember;
 
     if (manualReviewerId) {
-      reviewer = await this.getTeamMember(manualReviewerId);
-      if (!reviewer) {
+      const reviewerResult = await this.getTeamMember(manualReviewerId);
+      if (!reviewerResult) {
         throw new Error('Specified reviewer not found');
       }
+      reviewer = reviewerResult;
     } else {
-      reviewer = await this.findBestReviewer(approval);
-    }
-
-    if (!reviewer) {
-      throw new Error('No available reviewers found');
+      const reviewerResult = await this.findBestReviewer(approval);
+      if (!reviewerResult) {
+        throw new Error('No available reviewers found');
+      }
+      reviewer = reviewerResult;
     }
 
     await this.db.query(
