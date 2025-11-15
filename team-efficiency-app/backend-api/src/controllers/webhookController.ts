@@ -115,10 +115,7 @@ export class WebhookController {
           [new Date(), pullRequestId]
         );
 
-        this.socketService.emit('queue_updated', {
-          type: 'queue_updated',
-          timestamp: new Date()
-        });
+        this.socketService.broadcastApprovalUpdated({ id: 'queue-update' });
 
         await this.webhookService.updatePRStatus(
           githubRepo,
